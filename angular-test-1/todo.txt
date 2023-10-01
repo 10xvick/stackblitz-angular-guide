@@ -4,3 +4,5 @@
 -> interceptor
 -> basic node js
 -> rxjs
+-> view encapsulation
+-> forms
