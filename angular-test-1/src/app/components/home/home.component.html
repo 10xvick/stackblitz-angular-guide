@@ -1,3 +1,6 @@
 <p>home</p>
 
 
+<ng-container *ngFor='let link of links | keyvalue'>
+  <div [routerLink]=[link.value]>{{link.key}}</div>
+</ng-container>
