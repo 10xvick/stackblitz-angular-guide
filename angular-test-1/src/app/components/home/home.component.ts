@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ROUTES, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,6 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
-  links = {
-    todo:'todo',
-    about:'about',
-  }
-  
+  routes = new Router().config;
+
 }
