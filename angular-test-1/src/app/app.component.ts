@@ -8,12 +8,18 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'angular-test-1';
-  routes : Array<String> = [];
+  routes:string[] = [];
   constructor(private router:Router){
     this.router.events.subscribe(e=>{
       if(e instanceof NavigationEnd){
-        console.log(e.urlAfterRedirects)
-        this.routes = e.urlAfterRedirects.split('/');
+        
+        if(e.urlAfterRedirects=='/'){
+          this.routes = ['']
+        }else {
+          this.routes = e.urlAfterRedirects.split('/');
+          
+        }
+
       }
     })
   }
