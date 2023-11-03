@@ -3,15 +3,20 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec node server/index"
+    "dev": "nodemon --exec ts-node server/index"
   },
   "dependencies": {
     "@angular/cli": "^16.2.4",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "node": "^21.1.0"
+    "node": "^21.1.0",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
+    "@types/body-parser": "^1.19.4",
+    "@types/cors": "^2.8.15",
+    "@types/express": "^4.17.20",
+    "@types/node": "^20.8.10",
     "nodemon": "^3.0.1"
   }
 }

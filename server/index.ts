@@ -1,8 +1,8 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var app = express();
-var port = 8080;
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const app = express();
+const port = 8080;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -27,7 +27,7 @@ app.get('/todo/list', function (req, res) {
 app.post('/todo/create', function (req, res) {
   const newtodo = req.body?.text;
   if (newtodo) {
-    if (todos.includes(newtodo))
+    if (todos.indexOf(newtodo) != -1)
       return res.status(409).json({ error: 'duplicate entry' });
     todos.push(req.body.text);
   }
@@ -36,5 +36,5 @@ app.post('/todo/create', function (req, res) {
 });
 
 app.listen(port, function () {
-  console.log('app is running on http://localhost:'.concat(port));
+  return console.log('app is running on http://localhost:'.concat(`${port}`));
 });
