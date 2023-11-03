@@ -3,8 +3,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon --exec ts-node server/index",
-    "client": "cd angular-test-1\nng serve"
+    "server": "npm i\nnodemon --exec ts-node server/index",
+    "client": "cd angular-test-1\nnpm i\nng serve"
   },
   "dependencies": {
     "@angular/cli": "^16.2.4",
