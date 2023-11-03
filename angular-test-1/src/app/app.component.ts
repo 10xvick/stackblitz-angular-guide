@@ -19,7 +19,6 @@ export class AppComponent {
           this.routes = e.urlAfterRedirects.split('/');
           
         }
-
       }
     })
   }
