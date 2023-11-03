@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ROUTES, Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 
 @Component({
@@ -13,7 +13,6 @@ export class HomeComponent {
   constructor(private productservice: ProductsService) {}
 
   ngOnInit() {
-    console.log('oninit');
-    this.productservice.test();
+    this.productservice.getproducts().subscribe(console.log);
   }
 }

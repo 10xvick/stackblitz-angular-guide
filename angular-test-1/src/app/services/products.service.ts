@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { endpoints } from '../constants/endpoints';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  private http;
-
-  constructor(private httpx: HttpClient) {
-    this.http = httpx;
-  }
+  constructor(private http: HttpClient) {}
 
   getproducts() {
-    return this.http.get(endpoints.locathost + 'todo/test');
+    const url = endpoints.locathost + '/todo/test';
+    return this.http.get(url);
   }
 
   test() {
-    this.getproducts().subscribe(console.log);
+    return of(1);
   }
 }

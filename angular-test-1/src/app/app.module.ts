@@ -10,6 +10,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductsService } from './services/products.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,8 +21,9 @@ import { ProductsService } from './services/products.service';
     ProductsComponent,
     ProductDetailsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, CommonModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, CommonModule],
   providers: [ProductsService],
   bootstrap: [AppComponent],
 })
+
 export class AppModule {}

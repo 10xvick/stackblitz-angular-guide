@@ -2,11 +2,11 @@
   <div class="bg-gray-400">
     <button
       class="btn bg-gray-300 px-4"
-      *ngFor="let route of routes;let last=last"
-      routerLink="{{'/'+route}}"
-      [disabled] =last
+      *ngFor="let route of routes; let last = last"
+      routerLink="{{ '/' + route }}"
+      [disabled]="last"
     >
-      {{ route || 'home'}}
+      {{ route || 'home' }}
     </button>
   </div>
   <div class="bg-gray-200 flex-grow">
