@@ -13,6 +13,6 @@ export class HomeComponent {
   constructor(private productservice: ProductsService) {}
 
   ngOnInit() {
-    this.productservice.getproducts().subscribe(console.log);
+    this.productservice.test().subscribe(console.log);
   }
 }

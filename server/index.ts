@@ -1,13 +1,15 @@
+import { endpoints } from '../constants/endpoints';
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-const port = 8080;
+const port = endpoints.server.port;
 
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/todo/test', function (req, res) {
+app.get('/test', function (req, res) {
   setTimeout(function () {
     res.json({
       data: 'server is running and accepting requests from this client',
