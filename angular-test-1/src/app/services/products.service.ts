@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, of } from 'rxjs';
+import { map, mergeMap, of } from 'rxjs';
 import { endpoints } from '../../../../constants/endpoints';
 
 @Injectable({
@@ -24,10 +24,13 @@ export class ProductsService {
   delete(id) {
     console.log('delete');
     return this.http.delete(this.api.delete.url + '/' + id).pipe(
-      map((e: any) => {
-        console.log(e);
-        return e.data;
-      })
+      map(
+        (e: any) => {
+          console.log(e, 'deleted');
+          return e.data;
+        },
+        mergeMap((e) => this.get())
+      )
     );
   }
 
