@@ -15,11 +15,15 @@
 </form> -->
 
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-  <ng-container *ngFor="let formControl of myForm.controls | keyvalue">
+  <!-- <ng-container *ngFor="let formControl of myForm.controls | keyvalue">
     <label>{{ formControl.key }}</label>
     <input formControlName="{{ formControl.value }}" />
-  </ng-container>
-  <button class="btn bg-green-400 text-white p-1 px-2" type="submit">
+  </ng-container> -->
+  <button
+    (click)="onSubmit()"
+    class="btn bg-green-400 text-white p-1 px-2"
+    type="submit"
+  >
     Submit
   </button>
 </form>
