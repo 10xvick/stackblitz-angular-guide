@@ -5,18 +5,18 @@
     <td class="p-2 border border-slate-500">id</td>
     <td class="p-2 border border-slate-500">product</td>
     <td
-      class="p-2 border border-slate-500 bg-green-500 text-white"
-      (click)="this.service.create()"
+      class="p-2 border border-slate-500 bg-green-500 text-white cursor-pointer"
+      (click)="create()"
     >
       create new
     </td>
   </tr>
-  <tr *ngFor="let product of products | async; let i = index">
+  <tr *ngFor="let product of this.service.products | async; let i = index">
     <td class="p-2 border border-slate-400">{{ product.id }}</td>
     <td class="p-2 border border-slate-400">{{ product.name }}</td>
     <td
-      class="p-2 border border-red-400 bg-red-600 text-white"
-      (click)="this.service.delete(product.id)"
+      class="p-2 border border-red-400 bg-red-600 text-white cursor-pointer"
+      (click)="delete(product.id)"
     >
       delete
     </td>

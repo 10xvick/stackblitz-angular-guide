@@ -7,7 +7,6 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'angular-test-1';
   routes: string[] = [];
   constructor(private router: Router) {
     this.router.events.subscribe((e) => {

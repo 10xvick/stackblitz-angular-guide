@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, mergeMap, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Subject, map, mergeMap } from 'rxjs';
 import { endpoints } from '../../../../constants/endpoints';
 
 @Injectable({
@@ -10,27 +10,36 @@ export class ProductsService {
   api = endpoints.server.api.products;
   constructor(private http: HttpClient) {}
 
+  products = new BehaviorSubject([]);
+
   get() {
     return this.http.get(this.api.read.url).pipe(
       map((e: any) => {
-        console.log(e);
-        return e.data;
+        this.products.next(e.data);
       })
     );
   }
 
-  create() {}
+  create(product = { name: 'product-' + Math.random() }) {
+    const p = JSON.stringify(product);
+    return this.http
+      .post(this.api.create.url, p, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .pipe(
+        map((e: any) => {
+          return e.data;
+        }),
+        mergeMap((e) => this.get())
+      );
+  }
 
   delete(id) {
-    console.log('delete');
     return this.http.delete(this.api.delete.url + '/' + id).pipe(
-      map(
-        (e: any) => {
-          console.log(e, 'deleted');
-          return e.data;
-        },
-        mergeMap((e) => this.get())
-      )
+      map((e: any) => {
+        return e.data;
+      }),
+      mergeMap((e) => this.get())
     );
   }
 
