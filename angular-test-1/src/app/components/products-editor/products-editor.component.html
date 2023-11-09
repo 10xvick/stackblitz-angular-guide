@@ -1,0 +1,11 @@
+<p>products-editor works!</p>
+<br />
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <ng-container *ngFor="let control of myForm.controls | keyvalue">
+    <label>{{ control.key }}</label>
+    <input [formControlName]="control.key" />
+  </ng-container>
+  <button class="btn bg-green-400 text-white p-1 px-2" type="submit">
+    Submit
+  </button>
+</form>

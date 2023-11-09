@@ -16,8 +16,16 @@ export class ProductsComponent {
 
   create() {
     //go to create product form
-    this.router.navigate(['/products/details']);
+    this.router.navigate(['/products/editor'], {
+      queryParams: { id: 12, name: 'abc' },
+    });
     // this.service.create(product).subscribe();
+  }
+
+  edit() {
+    this.router.navigate(['/products/editor'], {
+      queryParams: { id: 12, name: 'abc' },
+    });
   }
 
   delete(id) {
