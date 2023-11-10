@@ -36,6 +36,8 @@ export class ProductsEditorComponent {
   onSubmit(): void {
     if (this.myForm.valid) {
       const formData = this.myForm.value;
+      if (this.id) formData.id = this.id;
+
       this.service.create(formData).subscribe((e) => {
         console.log(e);
         this.myForm.reset();
