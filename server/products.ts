@@ -35,6 +35,20 @@ export const products = {
       },
     ],
   },
+  update: {
+    method: 'put',
+    args: [
+      '/update',
+      (req, res) => {
+        const { id, name } = req.body;
+        const item = data.find((e) => e.id == id);
+        if (item) item.name = name;
+        res.json({
+          data: 'successfully modified ' + req.body.name,
+        });
+      },
+    ],
+  },
   delete: {
     method: 'delete',
     args: [

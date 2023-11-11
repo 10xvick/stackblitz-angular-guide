@@ -27,10 +27,20 @@ export class ProductsService {
         headers: { 'Content-Type': 'application/json' },
       })
       .pipe(
-        map((e: any) => {
-          return e.data;
-        }),
-        mergeMap((e) => this.get())
+        map(console.log),
+        mergeMap(() => this.get())
+      );
+  }
+
+  update(product = { name: 'product-' + Math.random() }) {
+    const p = JSON.stringify(product);
+    return this.http
+      .put(this.api.update.url, p, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .pipe(
+        map(console.log),
+        mergeMap(() => this.get())
       );
   }
 

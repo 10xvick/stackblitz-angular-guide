@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { Router } from '@angular/router';
+import { blueprint } from '../../../../../server/models/products';
 
 @Component({
   selector: 'app-products',
@@ -17,14 +18,15 @@ export class ProductsComponent {
   create() {
     //go to create product form
     this.router.navigate(['/products/editor'], {
-      queryParams: { id: 12, name: 'abc' },
+      queryParams: blueprint.product,
     });
     // this.service.create(product).subscribe();
   }
 
-  edit() {
+  update(product) {
+    console.log();
     this.router.navigate(['/products/editor'], {
-      queryParams: { id: 12, name: 'abc' },
+      queryParams: product,
     });
   }
 

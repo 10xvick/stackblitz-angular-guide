@@ -10,7 +10,7 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ProductsEditorComponent {
   myForm: FormGroup;
-  id: number;
+  params: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -20,29 +20,24 @@ export class ProductsEditorComponent {
   ) {}
 
   ngOnInit() {
-    const { id, name } = this.route.snapshot.queryParams || {
-      id: '',
-      name: '',
-    };
-
-    this.id = id;
-
-    this.myForm = this.formBuilder.group({
-      name: [name, [Validators.required]],
-      information: [''],
-    });
+    this.params = this.route.snapshot.queryParams;
+    this.myForm = this.formBuilder.group(this.params);
   }
 
   onSubmit(): void {
     if (this.myForm.valid) {
       const formData = this.myForm.value;
-      if (this.id) formData.id = this.id;
 
-      this.service.create(formData).subscribe((e) => {
+      const callback = (e) => {
         console.log(e);
         this.myForm.reset();
         this.router.navigate(['/products']);
-      });
+      };
+
+      if (this.params.id) {
+        formData.id = this.params.id;
+        this.service.update(formData).subscribe(callback);
+      } else this.service.create(formData).subscribe(callback);
     } else {
       console.log('invalid form', this.myForm);
     }
