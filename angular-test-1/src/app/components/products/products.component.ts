@@ -16,11 +16,9 @@ export class ProductsComponent {
   }
 
   create() {
-    //go to create product form
     this.router.navigate(['/products/editor'], {
       queryParams: blueprint.product,
     });
-    // this.service.create(product).subscribe();
   }
 
   update(product) {
