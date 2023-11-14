@@ -42,10 +42,16 @@ export const products = {
       (req, res) => {
         const { id, name } = req.body;
         const item = data.find((e) => e.id == id);
-        if (item) item.name = name;
-        res.json({
-          data: 'successfully modified ' + req.body.name,
-        });
+        if (item) {
+          const oldname = item.name;
+          item.name = name;
+          res.json({
+            data: 'successfully modified ' + oldname + ' to ' + name,
+          });
+        } else
+          res.json({
+            data: 'item not found!',
+          });
       },
     ],
   },
