@@ -18,6 +18,11 @@ header,footer,.main-sidebar{
   background-color: var(--secondary-bg-color);
 }
 
+svg{
+  display: inline;
+  margin-top: -4%;
+}
+
 
 
 
