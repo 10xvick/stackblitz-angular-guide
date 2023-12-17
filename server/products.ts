@@ -17,7 +17,7 @@ export const products = {
       read.route,
       (req, res) => {
         res.json({
-          data: data,
+          data: data.filter((e) => e),
         });
       },
     ],
@@ -27,8 +27,10 @@ export const products = {
     args: [
       '/create',
       (req, res) => {
-        data.push({ name: req.body.name, id: data.length + 1 });
-        console.log(data, req.body);
+        const id = utility.findNextIdInArray(data);
+
+        data[id] = { name: req.body.name, id: id + 1 };
+
         res.json({
           data: 'successfully created ' + req.body.name,
         });
@@ -60,8 +62,13 @@ export const products = {
     args: [
       '/delete/:id',
       (req, res) => {
-        data = data.filter((e) => e.id != req.params.id);
-
+        for (let e of data) {
+          if (e?.id == req.params.id) {
+            delete data[e.id - 1];
+            break;
+          }
+        }
+        console.log(data);
         res.json({
           data: 'successfully deleted ' + req.params.id,
         });
@@ -71,3 +78,10 @@ export const products = {
 };
 
 console.log(read.route);
+
+const utility = {
+  findNextIdInArray: (arr) => {
+    for (let i = 0; i < arr.length; i++) if (arr[i] == undefined) return i;
+    return arr.length;
+  },
+};
